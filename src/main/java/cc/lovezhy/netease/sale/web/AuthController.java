@@ -1,5 +1,6 @@
 package cc.lovezhy.netease.sale.web;
 
+import cc.lovezhy.netease.sale.common.UserInfo;
 import cc.lovezhy.netease.sale.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,13 +12,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletResponse;
 
 @Controller
-public class LoginController {
+public class AuthController {
 
 
     private AuthService authService;
 
     @Autowired
-    public LoginController(AuthService authService) {
+    public AuthController(AuthService authService) {
         this.authService = authService;
     }
 
@@ -34,4 +35,11 @@ public class LoginController {
         authService.login(userName, password, httpServletResponse);
         return true;
     }
+
+    @GetMapping("/logout")
+    public String userLogout(UserInfo userInfo, HttpServletResponse httpServletResponse) {
+        authService.logout(userInfo, httpServletResponse);
+        return "loginin";
+    }
 }
+

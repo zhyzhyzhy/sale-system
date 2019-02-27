@@ -38,6 +38,9 @@ public class RedisService {
     }
 
     public void removeFromCache(String key) {
+        if (StringUtils.isEmpty(key)) {
+            return;
+        }
         template.delete(key);
     }
 

@@ -44,9 +44,12 @@ public class AuthService {
         return true;
     }
 
-    public boolean logout(UserInfo userInfo) {
+    public boolean logout(UserInfo userInfo, HttpServletResponse httpServletResponse) {
         if (userInfo.getValid()) {
             redisService.removeFromCache(userInfo.getSessionId());
+            Cookie cookie = new Cookie(COOKIE_KEY, userInfo.getSessionId());
+            cookie.setMaxAge(0);
+            httpServletResponse.addCookie(cookie);
         }
         return true;
     }
