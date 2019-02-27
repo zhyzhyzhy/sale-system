@@ -13,7 +13,8 @@ public enum ResponseCodeEnum {
     INTERNAL_ERROR(301, "internal error"),
     LOGIN_FAIL(401, "login fail"),
     NOT_LOGIN(402, "not login"),
-    SESSION_INVALID(403, "session invalid")
+    SESSION_INVALID(403, "session invalid"),
+    GOOD_NOT_FOUND(404, "good not found")
 
     ;
 

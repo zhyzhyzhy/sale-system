@@ -33,7 +33,7 @@ public class FileUploadController {
     @ResponseBody
     public Map<String, String> uploadPic(@RequestParam MultipartFile pic) {
         try {
-            String url = storageService.upload(pic.getBytes(), pic.getName());
+            String url = storageService.upload(pic.getBytes(), pic.getOriginalFilename());
             return Collections.singletonMap("url", url);
         } catch (IOException e) {
             log.info(e.getMessage(), e);

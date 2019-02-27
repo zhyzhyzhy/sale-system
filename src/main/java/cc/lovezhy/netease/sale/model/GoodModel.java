@@ -7,6 +7,8 @@ import java.math.BigDecimal;
 @Data
 public class GoodModel {
 
+    private Integer id;
+
     private String title;
 
     private String summary;
@@ -16,4 +18,10 @@ public class GoodModel {
     private String detail;
 
     private BigDecimal price;
+
+    private Boolean hasBuy;
+
+    private Integer buyNum;
+
+    private BigDecimal buyPrice;
 }
