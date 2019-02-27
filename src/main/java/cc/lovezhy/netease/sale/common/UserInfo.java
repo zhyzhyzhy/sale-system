@@ -14,8 +14,17 @@ public class UserInfo {
 
     private String sessionId;
 
+    private Integer userId;
+
     private String name;
 
     private UserRoleEnum userRole;
 
+    public boolean isSeller() {
+        return valid && userRole.equals(UserRoleEnum.SELLER);
+    }
+
+    public boolean isBuyer() {
+        return valid && userRole.equals(UserRoleEnum.BUYER);
+    }
 }

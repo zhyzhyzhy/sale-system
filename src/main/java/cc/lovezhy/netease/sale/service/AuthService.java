@@ -1,6 +1,7 @@
 package cc.lovezhy.netease.sale.service;
 
 import cc.lovezhy.netease.sale.common.UserInfo;
+import cc.lovezhy.netease.sale.common.UserRoleEnum;
 import cc.lovezhy.netease.sale.entity.User;
 import cc.lovezhy.netease.sale.exception.HttpException;
 import cc.lovezhy.netease.sale.exception.ResponseCodeEnum;
@@ -38,8 +39,10 @@ public class AuthService {
         httpServletResponse.addCookie(new Cookie(COOKIE_KEY, sessionId));
 
         UserInfo userInfo = UserInfo.create(true);
+        userInfo.setUserId(user.getId());
         userInfo.setName(user.getName());
         userInfo.setSessionId(sessionId);
+        userInfo.setUserRole(UserRoleEnum.fromCode(user.getRole()));
         redisService.setToCacheAsync(sessionId, JSON.toJSONString(userInfo));
         return true;
     }
