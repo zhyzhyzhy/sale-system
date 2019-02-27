@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class IndexController {
@@ -19,9 +20,12 @@ public class IndexController {
     }
 
     @GetMapping("/")
-    public String index(UserInfo userInfo, Model model) {
+    public String index(UserInfo userInfo,
+                        @RequestParam(required = false, defaultValue = "0") Integer type,
+                        Model model) {
         model.addAttribute("userInfo", userInfo);
         model.addAttribute("goods", goodService.listAll());
+        model.addAttribute("type", type);
         return "index";
     }
 }

@@ -28,6 +28,10 @@ public class GoodService {
         return goodRepository.findAll();
     }
 
+    public List<Good> listByType(Integer type) {
+        return goodRepository.findAll();
+    }
+
     public void insert(UserInfo userInfo, Good good) {
         good.setUserId(userInfo.getUserId());
         goodRepository.save(good);

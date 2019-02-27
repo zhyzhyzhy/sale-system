@@ -47,8 +47,25 @@
 <div class="g-doc">
     <div class="m-tab m-tab-fw m-tab-simple f-cb">
         <div class="tab">
+
             <ul>
-                <li class="z-sel"><a href="/">所有内容</a></li>
+                <li th:if="${userInfo.isSeller()}" class="z-sel"><a href="/">所有内容</a></li>
+
+                <li th:if="${userInfo.isBuyer() && type == 0}" class="z-sel">
+                    <a href="/">所有内容</a>
+                </li>
+
+                <li th:if="${userInfo.isBuyer() && type == 1}">
+                    <a href="/">所有内容</a>
+                </li>
+
+                <li th:if="${userInfo.isBuyer() && type == 0}">
+                    <a href="/?type=1">未购买的内容</a>
+                </li>
+
+                <li th:if="${userInfo.isBuyer() && type == 1}" class="z-sel">
+                    <a href="/?type=1">未购买的内容</a>
+                </li>
 
             </ul>
         </div>

@@ -1,17 +1,18 @@
 package cc.lovezhy.netease.sale.web;
 
 import cc.lovezhy.netease.sale.common.UserInfo;
+import cc.lovezhy.netease.sale.model.BuyingGoodModel;
 import cc.lovezhy.netease.sale.model.GoodModel;
 import cc.lovezhy.netease.sale.service.GoodService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 public class GoodController {
-
 
     private GoodService goodService;
 
@@ -38,5 +39,15 @@ public class GoodController {
         GoodModel goodModel = goodService.queryGoodModel(userInfo, id);
         model.addAttribute("good", goodModel);
         return "edit";
+    }
+
+    @PostMapping("/buy")
+    @ResponseBody
+    public Boolean buyGoods(UserInfo userInfo,
+                           @RequestBody List<BuyingGoodModel> buyingGoodModelList,
+                           Model model) {
+
+        System.out.println(buyingGoodModelList);
+        return true;
     }
 }
