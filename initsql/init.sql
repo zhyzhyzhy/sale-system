@@ -18,8 +18,8 @@ create table good
   user_id int           not null,
   title   varchar(128)  not null,
   summary    varchar(256)  not null,
-  pic     varchar(1024) not null,
-  body    varchar(1024) not null,
+  image     varchar(1024) not null,
+  detail    varchar(1024) not null,
   price   decimal       not null,
   unique key uk_tile (title)
 ) engine = InnoDB

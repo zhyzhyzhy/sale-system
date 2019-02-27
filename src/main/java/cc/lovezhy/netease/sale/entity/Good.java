@@ -22,9 +22,9 @@ public class Good {
 
     private String summary;
 
-    private String pic;
+    private String image;
 
-    private String body;
+    private String detail;
 
     private BigDecimal price;
 }

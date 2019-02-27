@@ -33,7 +33,7 @@ public class UserService {
             newUser.setId(user.getId());
             BeanUtils.copyProperties(newUser, user);
         } else {
-            userRepository.save(user);
+            userRepository.save(newUser);
         }
     }
 
