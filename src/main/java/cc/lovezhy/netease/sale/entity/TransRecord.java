@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.math.BigDecimal;
+import java.util.Date;
 
 @Data
 @Entity(name = "trans_record")
@@ -19,7 +21,9 @@ public class TransRecord {
 
     private Integer goodId;
 
+    private BigDecimal price;
+
     private Integer num;
 
-    private Boolean hasBuy;
+    private Date createTime;
 }

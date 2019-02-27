@@ -43,6 +43,15 @@ public class GoodService {
         BeanUtils.copyProperties(newGood, good);
     }
 
+    public Good queryGoodById(Integer goodId) {
+        Optional<Good> good = goodRepository.findById(goodId);
+        if (!good.isPresent()) {
+            throw HttpException.create(ResponseCodeEnum.GOOD_NOT_FOUND);
+        }
+        return good.get();
+    }
+
+
     public GoodModel queryGoodModel(UserInfo userInfo, Integer goodId) {
         Optional<Good> good = goodRepository.findById(goodId);
         if (!good.isPresent()) {

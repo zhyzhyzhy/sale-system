@@ -4,6 +4,7 @@ import cc.lovezhy.netease.sale.common.UserInfo;
 import cc.lovezhy.netease.sale.model.BuyingGoodModel;
 import cc.lovezhy.netease.sale.model.GoodModel;
 import cc.lovezhy.netease.sale.service.GoodService;
+import cc.lovezhy.netease.sale.service.TransRecordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,10 +16,12 @@ import java.util.List;
 public class GoodController {
 
     private GoodService goodService;
+    private TransRecordService transRecordService;
 
     @Autowired
-    public GoodController(GoodService goodService) {
+    public GoodController(GoodService goodService, TransRecordService transRecordService) {
         this.goodService = goodService;
+        this.transRecordService = transRecordService;
     }
 
     @GetMapping("/show")
@@ -44,10 +47,9 @@ public class GoodController {
     @PostMapping("/buy")
     @ResponseBody
     public Boolean buyGoods(UserInfo userInfo,
-                           @RequestBody List<BuyingGoodModel> buyingGoodModelList,
-                           Model model) {
+                            @RequestBody List<BuyingGoodModel> buyingGoodModelList) {
 
-        System.out.println(buyingGoodModelList);
+        transRecordService.insert(userInfo, buyingGoodModelList);
         return true;
     }
 }
