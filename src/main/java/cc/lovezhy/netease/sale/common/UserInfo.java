@@ -11,7 +11,12 @@ public class UserInfo {
     }
 
     private Boolean valid;
+
+    private String sessionId;
+
     private String name;
+
     private UserRoleEnum userRole;
+
 
 }

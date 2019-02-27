@@ -39,7 +39,15 @@ public class AuthService {
 
         UserInfo userInfo = UserInfo.create(true);
         userInfo.setName(user.getName());
+        userInfo.setSessionId(sessionId);
         redisService.setToCacheAsync(sessionId, JSON.toJSONString(userInfo));
+        return true;
+    }
+
+    public boolean logout(UserInfo userInfo) {
+        if (userInfo.getValid()) {
+            redisService.removeFromCache(userInfo.getSessionId());
+        }
         return true;
     }
 }
