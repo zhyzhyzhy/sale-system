@@ -60,5 +60,13 @@ public class TransRecordService {
         }).collect(Collectors.toList());
     }
 
+    public TransRecord queryRecordByGoodId(UserInfo userInfo, Integer goodId) {
+        return transRecordRepository.findByUserIdAndGoodId(userInfo.getUserId(), goodId);
+    }
+
+    public boolean checkHasBeenSold(Integer goodId) {
+        return transRecordRepository.existsTransRecordByGoodId(goodId);
+    }
+
 
 }

@@ -73,7 +73,7 @@
     <div class="n-plist">
         <ul class="f-cb" id="plist">
 
-            <li th:each="good : ${goods}">
+            <li th:each="good : ${goods}" th:id="'p-' + ${good.getId()}">
                 <a th:href="@{'/show?id=' + ${good.id}}" class="link">
                     <div class="img">
                         <img th:src="${good.image}">
@@ -83,7 +83,14 @@
                         <span class="v-unit">¥</span>
                         <span th:text="${good.price}" class="v-value"></span>
                     </div>
+
+
+
+                    <span th:if="${userInfo.isSeller() && good.getHasBeenSold()}" class="had"><b>已售出</b></span>
+
+                    <span th:if="${userInfo.isBuyer() && good.getHasBuy() }" class="had"><b>已购买</b></span>
                 </a>
+                <span th:if="${userInfo.isSeller() && good.getHasBeenSold() == false}" class="u-btn u-btn-normal u-btn-xs del" th:data-del="${good.getId()}">删除</span>
             </li>
         </ul>
     </div>

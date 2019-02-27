@@ -24,7 +24,11 @@ public class IndexController {
                         @RequestParam(required = false, defaultValue = "0") Integer type,
                         Model model) {
         model.addAttribute("userInfo", userInfo);
-        model.addAttribute("goods", goodService.listAll());
+        if (userInfo.isSeller()) {
+            model.addAttribute("goods", goodService.sellerListAll(userInfo));
+        } else {
+            model.addAttribute("goods", goodService.list(userInfo, type));
+        }
         model.addAttribute("type", type);
         return "index";
     }

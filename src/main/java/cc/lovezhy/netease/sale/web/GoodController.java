@@ -52,4 +52,11 @@ public class GoodController {
         transRecordService.insert(userInfo, buyingGoodModelList);
         return true;
     }
+
+    @PostMapping("/delete")
+    @ResponseBody
+    public Boolean deleteGoods(UserInfo userInfo, @RequestParam Integer id) {
+        goodService.deleteById(id);
+        return true;
+    }
 }

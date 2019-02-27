@@ -73,7 +73,7 @@
                 <span class="buyprice">当时购买价格：¥<span th:text="${good.getBuyPrice()}"></span></span>
             </div>
 
-            <div th:if="${userInfo.isBuyer()}" class="oprt f-cb">
+            <div th:if="${userInfo.isBuyer() && good.getHasBuy() == false}" class="oprt f-cb">
                 <button class="u-btn u-btn-primary" id="add" th:data-id="${good.getId()}" th:data-title="${good.getTitle()}" th:data-price="${good.getPrice()}">
                     加入购物车</button>
             </div>

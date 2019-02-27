@@ -7,4 +7,8 @@ import java.util.List;
 
 public interface TransRecordRepository extends JpaRepository<TransRecord, Integer> {
     List<TransRecord> findAllByUserId(Integer userId);
+
+    TransRecord findByUserIdAndGoodId(Integer userId, Integer goodId);
+
+    boolean existsTransRecordByGoodId(Integer goodId);
 }
