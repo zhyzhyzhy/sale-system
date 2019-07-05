@@ -6,7 +6,6 @@ import cc.lovezhy.netease.sale.service.StorageService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,6 +32,7 @@ public class FileUploadController {
     @ResponseBody
     public Map<String, String> uploadPic(@RequestParam MultipartFile pic) {
         try {
+            System.out.println("ccccccccccccc");
             String url = storageService.upload(pic.getBytes(), pic.getOriginalFilename());
             return Collections.singletonMap("url", url);
         } catch (IOException e) {

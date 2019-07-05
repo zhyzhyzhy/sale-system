@@ -20,7 +20,7 @@ create table good
   summary varchar(256)  not null,
   image   varchar(1024) not null,
   detail  varchar(1024) not null,
-  price   decimal       not null,
+  price   decimal(11,2)       not null,
   unique key uk_tile (title)
 ) engine = InnoDB
   DEFAULT CHARSET = UTF8
@@ -32,7 +32,7 @@ create table trans_record
   id      int primary key auto_increment,
   user_id int     not null,
   good_id int     not null,
-  price   decimal not null,
+  price   decimal(2,11) not null,
   num     int     not null,
   create_time datetime not null ,
   unique key uk_user_good (user_id, good_id)

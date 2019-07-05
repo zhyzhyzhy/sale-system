@@ -6,6 +6,7 @@ import cc.lovezhy.netease.sale.model.GoodModel;
 import cc.lovezhy.netease.sale.service.GoodService;
 import cc.lovezhy.netease.sale.service.TransRecordService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
