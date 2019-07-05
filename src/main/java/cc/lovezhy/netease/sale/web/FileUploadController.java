@@ -33,6 +33,7 @@ public class FileUploadController {
     public Map<String, String> uploadPic(@RequestParam MultipartFile pic) {
         try {
             System.out.println("ccccccccccccc");
+            System.out.println("dadadassad");
             String url = storageService.upload(pic.getBytes(), pic.getOriginalFilename());
             return Collections.singletonMap("url", url);
         } catch (IOException e) {
