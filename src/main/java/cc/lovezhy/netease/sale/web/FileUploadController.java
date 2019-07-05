@@ -37,6 +37,8 @@ public class FileUploadController {
             System.out.println("daffdnfkaefea");
             System.out.println("daffdnfkaefea");
             System.out.println("daffdnfkaefea");
+            System.out.println("daffdnfkaefea");
+            System.out.println("daffdnfkaefea");
             String url = storageService.upload(pic.getBytes(), pic.getOriginalFilename());
             return Collections.singletonMap("url", url);
         } catch (IOException e) {
